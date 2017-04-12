@@ -36,6 +36,8 @@ struct TreeNode {
     }
 };
 
+#define MAX_LEVELS 5
+
 class Tree {
 public:
     
@@ -48,16 +50,32 @@ public:
     
 private:
     
-    // Pointer to the root of the parse tree
+    // Pointer to the root of the parse tree.
     TreeNode* root;
     
     // SVG output.
     string svg;
     
+    // Number of levels on the tree.
+    int maxLevels;
+    
+    // The canvas.
     Canvas canvas;
-    float angle;
-    int width;
-    int height;
+    
+    // The initial stroke of the `rootLine`.
+    float initialStroke;
+    
+    // The root line of the tree.
+    Line rootLine;
+    
+    // The stroke shrink factor.
+    float strokeShrinkFactor;
+    
+    // The line shink factor.
+    float lineShrinkFactor;
+    
+    // The angle rotation factor.
+    float angleRotationFactor;
     
     // Internal Print
     void _output(TreeNode ** node);

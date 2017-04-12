@@ -13,6 +13,12 @@ public:
     
     string toSvg();
     
+    // Black color.
+    Color blackColor();
+    
+    // Green color.
+    Color greenColor();
+    
     float red;
     float green;
     float blue;

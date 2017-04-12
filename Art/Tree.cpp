@@ -7,28 +7,46 @@ using namespace std;
 //MARK: Constructor
 
 Tree::Tree() {
-    this->canvas = Canvas(Size(100, 100));
-    this->svg = "";
+    canvas = Canvas(Size(800, 450));
+    svg = "<svg width=\"" + to_string(roundf(canvas.size.width)) + "\" height=\"" + to_string(roundf(canvas.size.height)) + "\">\n";
+    svg += "<rect x=\"0\" y=\"0\" width=\"" + to_string(roundf(canvas.size.width)) + "\" height=\"" + to_string(roundf(canvas.size.height)) + "\" ";
+    svg += "style=\"fill:#007aff;\" />\n";
+    maxLevels = MAX_LEVELS;
+    initialStroke = 20;
+    strokeShrinkFactor = 0.5;
+    lineShrinkFactor = 0.75;
+    angleRotationFactor = 15.0;
     
-    Line left = Line();
-    Line right = Line();
-    left.x1 = 0;
-    left.y1 = 0;
-    left.x2 = canvas.size.width/2.0;
-    left.y2 = 0;
-    left.color = Color(0, 0.5, 1.0);
-    left.stroke = 5.0;
+    float halfCanvas = canvas.size.width/2;
+    float rootLineHeight = canvas.size.height/3;
+    Point rootStart = Point(halfCanvas, 0);
+    Point rootEnd = Point(halfCanvas, rootLineHeight);
+    rootLine = Line(rootStart, rootEnd, initialStroke, Color().blackColor());
+    svg += rootLine.getSvg();
     
-    right.x1 = left.x2;
-    right.y1 = left.y2;
-    right.x2 = left.x2;
-    right.y2 = canvas.size.height;
-    right.color = Color(1.0, 0.5, 0.0);
-    right.stroke = 2.0;
+    Line left = Line(rootLine.end, 90.0-angleRotationFactor, rootLine.getLength()*lineShrinkFactor);
+    left.color = Color().blackColor();
+    left.stroke = rootLine.stroke * strokeShrinkFactor;
     
+    Line right = Line(rootLine.end, 90.0+angleRotationFactor, rootLine.getLength()*lineShrinkFactor);
+    right.color = Color().blackColor();
+    right.stroke = rootLine.stroke * strokeShrinkFactor;
     
     TreeNode * t = new TreeNode(NULL, NULL, left, right);
     root = t;
+    
+    
+    Line left2 = Line(left.end, left.getAngle()+angleRotationFactor, left.getLength()*lineShrinkFactor);
+    left2.color = Color().blackColor();
+    left2.stroke = left.stroke * strokeShrinkFactor;
+    
+    Line right2 = Line(left.end, left.getAngle()-angleRotationFactor, left.getLength()*lineShrinkFactor);
+    right2.color = Color().blackColor();
+    right2.stroke = right.stroke * strokeShrinkFactor;
+    
+    cout << left.getAngle() << " is the angle." << endl;
+    
+    root->leftChild = new TreeNode(NULL, NULL, left2, right2);
 }
 
 
@@ -126,7 +144,6 @@ void Tree::output() {
     
     ofstream file ("art.svg");
     if (file.is_open()) {
-        file << "<svg width=\"" << roundf(this->canvas.size.width) << "\" height=\"" << roundf(this->canvas.size.height) << "\">\n";
         file << svg;
         file << "</svg>";
         file.close();

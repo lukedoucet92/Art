@@ -3,22 +3,27 @@
 #define LINE_H
 
 #include <string>
+#include <math.h>
 #include "Color.h"
+#include "Point.h"
 
 using namespace std;
 
 class Line {
 public:
     Line();
-    Line(float x1, float x2, float y1, float y2);
-    Line(float x1, float x2, float y1, float y2, float stroke, Color color);
+    Line(Point start, Point end);
+    Line(Point start, Point end, float stroke, Color color);
+    Line(Point start, float angle, float length);
     
-    float x1;
-    float x2;
-    float y1;
-    float y2;
+    Point start;
+    Point end;
     
     string getSvg();
+    
+    float getLength();
+    
+    float getAngle();
     
     Color color;
     

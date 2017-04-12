@@ -27,3 +27,12 @@ string Color::toSvg() {
     string svg = "rgb(" + to_string(r) + "," + to_string(g) + "," + to_string(b) + ")";
     return svg;
 }
+
+
+Color Color::blackColor() {
+    return Color(0.0, 0.0, 0.0);
+}
+
+Color Color::greenColor() {
+    return Color(0.0, 1.0, 0.0);
+}
