@@ -11,7 +11,6 @@ Tree::Tree() {
     svg = "<svg width=\"" + to_string(roundf(canvas.size.width)) + "\" height=\"" + to_string(roundf(canvas.size.height)) + "\">\n";
     svg += "<rect x=\"0\" y=\"0\" width=\"" + to_string(roundf(canvas.size.width)) + "\" height=\"" + to_string(roundf(canvas.size.height)) + "\" ";
     svg += "style=\"fill:#007aff;\" />\n";
-    maxLevels = MAX_LEVELS;
     initialStroke = 20;
     strokeShrinkFactor = 0.5;
     lineShrinkFactor = 0.75;
@@ -24,31 +23,80 @@ Tree::Tree() {
     rootLine = Line(rootStart, rootEnd, initialStroke, Color().blackColor());
     svg += rootLine.getSvg();
     
-    Line left = Line(rootLine.end, 90.0-angleRotationFactor, rootLine.getLength()*lineShrinkFactor);
-    left.color = Color().blackColor();
-    left.stroke = rootLine.stroke * strokeShrinkFactor;
+//    Line left = Line(rootLine.end, 90.0-angleRotationFactor, rootLine.getLength()*lineShrinkFactor);
+//    left.color = Color().blackColor();
+//    left.stroke = rootLine.stroke * strokeShrinkFactor;
+//    
+//    Line right = Line(rootLine.end, 90.0+angleRotationFactor, rootLine.getLength()*lineShrinkFactor);
+//    right.color = Color().blackColor();
+//    right.stroke = rootLine.stroke * strokeShrinkFactor;
+//    
+//    TreeNode * t = new TreeNode(NULL, NULL, left, right, NULL);
+//    root = t;
     
-    Line right = Line(rootLine.end, 90.0+angleRotationFactor, rootLine.getLength()*lineShrinkFactor);
-    right.color = Color().blackColor();
-    right.stroke = rootLine.stroke * strokeShrinkFactor;
+//    
+//    Line left2 = Line(left.end, left.getAngle()+angleRotationFactor, left.getLength()*lineShrinkFactor);
+//    left2.color = Color().blackColor();
+//    left2.stroke = left.stroke * strokeShrinkFactor;
+//    
+//    Line right2 = Line(left.end, left.getAngle()-angleRotationFactor, left.getLength()*lineShrinkFactor);
+//    right2.color = Color().blackColor();
+//    right2.stroke = right.stroke * strokeShrinkFactor;
+//    
+//    cout << left.getAngle() << " is the angle." << endl;
+//    
+//    root->leftChild = new TreeNode(NULL, NULL, left2, right2, &left);
     
-    TreeNode * t = new TreeNode(NULL, NULL, left, right);
-    root = t;
-    
-    
-    Line left2 = Line(left.end, left.getAngle()+angleRotationFactor, left.getLength()*lineShrinkFactor);
-    left2.color = Color().blackColor();
-    left2.stroke = left.stroke * strokeShrinkFactor;
-    
-    Line right2 = Line(left.end, left.getAngle()-angleRotationFactor, left.getLength()*lineShrinkFactor);
-    right2.color = Color().blackColor();
-    right2.stroke = right.stroke * strokeShrinkFactor;
-    
-    cout << left.getAngle() << " is the angle." << endl;
-    
-    root->leftChild = new TreeNode(NULL, NULL, left2, right2);
+    _skew();
+    _complete();
+    _post_order_map(&root, &Tree::_output);
 }
 
+/// Creates a left skewed tree.
+void Tree::_skew() {
+    int currentLevel = NUM_LEVELS;
+    
+    TreeNode* ptr = NULL;
+    
+    while (currentLevel > 0) {
+        TreeNode* newNode = new TreeNode();
+        (*newNode).currentLevel = currentLevel;
+        if(ptr == NULL) {
+            ptr = newNode;
+        } else {
+            newNode->leftChild = ptr;
+            ptr->parent = newNode;
+            ptr = newNode;
+        }
+        newNode = NULL;
+        currentLevel--;
+    }
+    
+    root = ptr;
+    ptr = NULL;
+}
+
+/// Creates a complete binary tree from the skewed tree.
+void Tree::_complete() {
+    _pre_order_map(&root, &Tree::_completeNode);
+}
+
+void Tree::_completeNode(TreeNode ** node) {
+    if((*node)->currentLevel != NUM_LEVELS) {
+        if ((*node)->leftChild == NULL) {
+            TreeNode* newNode = new TreeNode();
+            newNode->parent = *node;
+            newNode->currentLevel = (*node)->currentLevel+1;
+            (*node)->leftChild = newNode;
+        }
+        if ((*node)->rightChild == NULL) {
+            TreeNode* newNode = new TreeNode();
+            newNode->parent = *node;
+            newNode->currentLevel = (*node)->currentLevel+1;
+            (*node)->rightChild = newNode;
+        }
+    }
+}
 
 //MARK: Destructor
 
