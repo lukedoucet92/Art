@@ -55,6 +55,9 @@ float Line::getAngle() {
     float deltaX = fabs(start.x - end.x + 0.0);
     float deltaY = fabs(start.y - end.y + 0.0);
     float angle = atan(deltaY / deltaX * M_PI / 180.0);
+    
+    std::cout << angle << std::endl;
+    
     return angle;
 }
 
@@ -65,6 +68,6 @@ string Line::getSvg() {
     svg += "x2=\"" + to_string(this->end.x) + "\" ";
     svg += "y2=\"" + to_string(this->end.y) + "\" ";
     svg += "style=\"stroke:" + this->color.toSvg() + ";stroke-width:";
-    svg += to_string(this->stroke) + "\" />\n";
+    svg += to_string(this->stroke) + ";stroke-opacity:" + to_string(this->color.alpha) + "\" />\n";
     return svg;
 }

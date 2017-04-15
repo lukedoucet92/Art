@@ -62,7 +62,7 @@ struct TreeNode {
     }
 };
 
-#define NUM_LEVELS 5
+#define NUM_LEVELS 9
 
 class Tree {
 public:
@@ -99,6 +99,9 @@ private:
     
     // The angle rotation factor.
     float angleRotationFactor;
+    
+    // The alpha fade factor.
+    float alphaFadeFactor;
     
     // Skews a tree to NUM_LEVELS.
     void _skew();

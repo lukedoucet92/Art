@@ -12,12 +12,14 @@ Color::Color() {
     this->red = 0.0;
     this->green = 0.0;
     this->blue = 0.0;
+    this->alpha = 1.0;
 }
 
-Color::Color(float red, float green, float blue) {
+Color::Color(float red, float green, float blue, float alpha) {
     this->red = red;
     this->green = green;
     this->blue = blue;
+    this->alpha = alpha;
 }
 
 string Color::toSvg() {
@@ -30,9 +32,9 @@ string Color::toSvg() {
 
 
 Color Color::blackColor() {
-    return Color(0.0, 0.0, 0.0);
+    return Color(0.0, 0.0, 0.0, 1.0);
 }
 
 Color Color::greenColor() {
-    return Color(0.0, 1.0, 0.0);
+    return Color(0.0, 1.0, 0.0, 1.0);
 }

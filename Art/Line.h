@@ -3,6 +3,7 @@
 #define LINE_H
 
 #include <string>
+#include <iostream>
 #include <math.h>
 #include "Color.h"
 #include "Point.h"
