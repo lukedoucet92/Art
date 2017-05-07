@@ -16,8 +16,15 @@ public:
     // Black color.
     Color blackColor();
     
+    // Red color.
+    Color redColor();
+    
     // Green color.
     Color greenColor();
+    
+    // Blue color.
+    Color blueColor();
+    
     
     float red;
     float green;

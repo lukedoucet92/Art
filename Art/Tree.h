@@ -30,7 +30,6 @@ struct TreeNode {
         this->rightLine = Line();
         this->parent = NULL;
         currentLevel = 0;
-        
     }
     
     TreeNode(TreeNode* leftChild, TreeNode* rightChild) {
@@ -40,7 +39,6 @@ struct TreeNode {
         this->rightLine = Line();
         this->parent = NULL;
         currentLevel = 0;
-
     }
     
     TreeNode(Line leftLine, Line rightLine) {

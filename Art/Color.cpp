@@ -38,3 +38,11 @@ Color Color::blackColor() {
 Color Color::greenColor() {
     return Color(0.0, 1.0, 0.0, 1.0);
 }
+
+Color Color::redColor() {
+    return Color(1.0, 0.0, 0.0, 1.0);
+}
+
+Color Color::blueColor() {
+    return Color(0.0, 0.0, 1.0, 1.0);
+}

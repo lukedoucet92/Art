@@ -54,7 +54,7 @@ float Line::getLength() {
 float Line::getAngle() {
     float deltaX = fabs(start.x - end.x + 0.0);
     float deltaY = fabs(start.y - end.y + 0.0);
-    float angle = atan(deltaY / deltaX * M_PI / 180.0);
+    float angle = atan(deltaY / deltaX * M_PI / 180.0) * (180.0/M_PI) - 90;
     
     std::cout << angle << std::endl;
     
