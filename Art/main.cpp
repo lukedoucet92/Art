@@ -15,7 +15,6 @@ int main(int argc, const char * argv[]) {
 
     try {
         Tree *tree = new Tree();
-        tree->output();
         delete tree;
     } catch (string exception) {
         cout << exception << endl;

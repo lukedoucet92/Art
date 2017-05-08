@@ -19,3 +19,7 @@ Canvas::Canvas(Size size) {
 Canvas::~Canvas() {
     
 }
+
+Point Canvas::midPoint() {
+    return Point(size.width/2, size.height/2);
+}

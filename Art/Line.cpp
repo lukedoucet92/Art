@@ -28,20 +28,10 @@ Line::Line(Point start, float degrees, float length) {
     this->start = start;
     this->stroke = 1.0;
     this->color = Color();
-        
-    if(degrees == 0.0 || degrees == 360.0) {
-        this->end = Point(start.x+length, start.y);
-    } else if(degrees == 90.0) {
-        this->end = Point(start.x, start.y+length);
-    } else if(degrees == 180.0) {
-        this->end = Point(start.x-length, start.y);
-    } else if(degrees == 270.0) {
-        this->end = Point(start.x, start.y-length);
-    } else {
-        float x = length * cos(degrees * M_PI / 180.0) + start.x;
-        float y = length * sin(degrees * M_PI / 180.0) + start.y;
-        this->end = Point(x, y);
-    }
+    
+    float x = length * cos(degrees * M_PI / 180.0) + start.x;
+    float y = length * sin(degrees * M_PI / 180.0) + start.y;
+    this->end = Point(x, y);
 }
 
 float Line::getLength() {
@@ -54,10 +44,7 @@ float Line::getLength() {
 float Line::getAngle() {
     float deltaX = fabs(start.x - end.x + 0.0);
     float deltaY = fabs(start.y - end.y + 0.0);
-    float angle = atan(deltaY / deltaX * M_PI / 180.0) * (180.0/M_PI) - 90;
-    
-    std::cout << angle << std::endl;
-    
+    float angle = atan(deltaY / deltaX * M_PI / 180.0) * (180.0/M_PI) - 90.0;
     return angle;
 }
 

@@ -10,11 +10,14 @@
 #define CANVAS_H
 
 #include "Size.h"
+#include "Point.h"
 
 struct Canvas {
     Canvas();
     Canvas(Size size);
     ~Canvas();
+    
+    Point midPoint();
     
     Size size;
 };

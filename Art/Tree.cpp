@@ -14,14 +14,21 @@ Tree::Tree() {
     initialStroke = 20;
     strokeShrinkFactor = 0.5;
     lineShrinkFactor = 0.75;
-    angleRotationFactor = 25.0;
+    angleRotationFactor = 15.0;
     alphaFadeFactor = 0.75;
     
     float x = canvas.size.width/2;
     rootLine = Line(Point(x, canvas.size.height), Point(x, canvas.size.height/2));
-    //rootLine = Line(Point(canvas.size.width/2, canvas.size.height), 90, rootLineLength);
     rootLine.stroke = initialStroke;
     svg += rootLine.getSvg();
+    
+//    Line test = Line(canvas.midPoint(), -angleRotationFactor, 100);
+//    test.color = Color().greenColor();
+//    test.stroke = 12;
+//    svg += test.getSvg();
+//    cout << "angle: " << test.getAngle() << endl;
+    
+    //TODO: Fix `getAngle()` function.
     
     _skew();
     _complete();
@@ -69,6 +76,7 @@ void Tree::_complete() {
     _pre_order_map(&root, &Tree::_completeNode);
 }
 
+/// Configures an individial node in the tree.
 void Tree::_completeNode(TreeNode ** node) {
     if((*node)->currentLevel != NUM_LEVELS) {
         if ((*node)->leftChild == NULL) {
@@ -86,35 +94,32 @@ void Tree::_completeNode(TreeNode ** node) {
     }
     
     if((*node)->parent != NULL) {
-        bool isRightSide = true;
-        
-        if((*node)->parent->leftChild == (*node)) {
-            isRightSide = false;
-        }
+        bool isRightSide = (*node)->parent->leftChild == (*node);
         
         if(isRightSide) {
             (*node)->leftLine.color = Color().blackColor();
             (*node)->leftLine.color.alpha = (*node)->parent->rightLine.color.alpha * alphaFadeFactor;
             (*node)->leftLine.start = (*node)->parent->rightLine.end;
-            (*node)->leftLine.end = Line((*node)->parent->rightLine.end, (*node)->parent->rightLine.getAngle()+angleRotationFactor, (*node)->parent->rightLine.getLength()*lineShrinkFactor).end;
+            (*node)->leftLine.end = Line((*node)->parent->rightLine.end, (*node)->parent->rightLine.getAngle()-(angleRotationFactor*(*node)->currentLevel), (*node)->parent->rightLine.getLength()*lineShrinkFactor).end;
             (*node)->leftLine.stroke = (*node)->parent->rightLine.stroke * strokeShrinkFactor;
             
             (*node)->rightLine.color = Color().blackColor();
             (*node)->rightLine.color.alpha = (*node)->parent->rightLine.color.alpha * alphaFadeFactor;
             (*node)->rightLine.start = (*node)->parent->rightLine.end;
-            (*node)->rightLine.end = Line((*node)->parent->rightLine.end, (*node)->parent->rightLine.getAngle()-angleRotationFactor, (*node)->parent->rightLine.getLength()*lineShrinkFactor).end;
+            (*node)->rightLine.end = Line((*node)->parent->rightLine.end, (*node)->parent->rightLine.getAngle()+(angleRotationFactor*(*node)->currentLevel), (*node)->parent->rightLine.getLength()*lineShrinkFactor).end;
             (*node)->rightLine.stroke = (*node)->parent->rightLine.stroke * strokeShrinkFactor;
+            
         } else {
-            (*node)->leftLine.color = Color().greenColor();
+            (*node)->leftLine.color = Color().blackColor();
             (*node)->leftLine.color.alpha = (*node)->parent->leftLine.color.alpha * alphaFadeFactor;
             (*node)->leftLine.start = (*node)->parent->leftLine.end;
-            (*node)->leftLine.end = Line((*node)->parent->leftLine.end, (*node)->parent->leftLine.getAngle()+angleRotationFactor, (*node)->parent->leftLine.getLength()*lineShrinkFactor).end;
+            (*node)->leftLine.end = Line((*node)->parent->leftLine.end, (*node)->parent->leftLine.getAngle()-(angleRotationFactor*(*node)->currentLevel), (*node)->parent->leftLine.getLength()*lineShrinkFactor).end;
             (*node)->leftLine.stroke = (*node)->parent->leftLine.stroke * strokeShrinkFactor;
             
-            (*node)->rightLine.color = Color().greenColor();
+            (*node)->rightLine.color = Color().blackColor();
             (*node)->rightLine.color.alpha = (*node)->parent->leftLine.color.alpha * alphaFadeFactor;
             (*node)->rightLine.start = (*node)->parent->leftLine.end;
-            (*node)->rightLine.end = Line((*node)->parent->leftLine.end, (*node)->parent->leftLine.getAngle()-angleRotationFactor, (*node)->parent->leftLine.getLength()*lineShrinkFactor).end;
+            (*node)->rightLine.end = Line((*node)->parent->leftLine.end, (*node)->parent->leftLine.getAngle()+(angleRotationFactor*(*node)->currentLevel), (*node)->parent->leftLine.getLength()*lineShrinkFactor).end;
             (*node)->rightLine.stroke = (*node)->parent->leftLine.stroke * strokeShrinkFactor;
         }
     }
