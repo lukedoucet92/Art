@@ -8,26 +8,14 @@ Line::Line() {
     this->end = Point();
     this->stroke = 1.0;
     this->color = Color();
-}
-
-Line::Line(Point start, Point end) {
-    this->start = start;
-    this->end = end;
-    this->stroke = 1.0;
-    this->color = Color();
-}
-
-Line::Line(Point start, Point end, float stroke, Color color) {
-    this->start = start;
-    this->end = end;
-    this->stroke = stroke;
-    this->color = color;
+    this->angle = 0;
 }
 
 Line::Line(Point start, float degrees, float length) {
     this->start = start;
     this->stroke = 1.0;
     this->color = Color();
+    this->angle = degrees;
     
     float x = length * cos(degrees * M_PI / 180.0) + start.x;
     float y = length * sin(degrees * M_PI / 180.0) + start.y;
@@ -41,13 +29,6 @@ float Line::getLength() {
     return c;
 }
 
-float Line::getAngle() {
-    float deltaX = fabs(start.x - end.x + 0.0);
-    float deltaY = fabs(start.y - end.y + 0.0);
-    float angle = atan(deltaY / deltaX * M_PI / 180.0) * (180.0/M_PI) - 90.0;
-    return angle;
-}
-
 string Line::getSvg() {
     string svg = "<line ";
     svg += "x1=\"" + to_string(this->start.x) + "\" ";
@@ -57,4 +38,16 @@ string Line::getSvg() {
     svg += "style=\"stroke:" + this->color.toSvg() + ";stroke-width:";
     svg += to_string(this->stroke) + ";stroke-opacity:" + to_string(this->color.alpha) + "\" />\n";
     return svg;
+}
+
+Point Line::getStart() {
+    return start;
+}
+
+Point Line::getEnd() {
+    return end;
+}
+
+float Line::getAngle() {
+    return angle;
 }

@@ -13,22 +13,22 @@ using namespace std;
 class Line {
 public:
     Line();
-    Line(Point start, Point end);
-    Line(Point start, Point end, float stroke, Color color);
     Line(Point start, float angle, float length);
     
-    Point start;
-    Point end;
-    
     string getSvg();
-    
-    float getLength();
-    
+    Point getStart();
+    Point getEnd();
     float getAngle();
+    float getLength();
     
     Color color;
     
     float stroke;
+    
+private:
+    float angle;
+    Point start;
+    Point end;
 };
 
 #endif
