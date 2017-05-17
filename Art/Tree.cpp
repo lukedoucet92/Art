@@ -8,44 +8,16 @@ using namespace std;
 
 Tree::Tree() {
     canvas = Canvas(Size(800, 450));
-    //svg = "<svg width=\"" + to_string(roundf(canvas.size.width)) + "\" height=\"" + to_string(roundf(canvas.size.height)) + "\">\n";
-    svg = "<svg width=\"100%\" height=\"100%\" viewBox=\"0 0 " + to_string(roundf(canvas.size.width)) + " " + to_string(roundf(canvas.size.height)) + "\">";
+    svg = "<svg width=\"" + to_string(roundf(canvas.size.width)) + "\" height=\"" + to_string(roundf(canvas.size.height)) + "\">\n";
+    //svg = "<svg width=\"100%\" height=\"100%\" viewBox=\"0 0 " + to_string(roundf(canvas.size.width)) + " " + to_string(roundf(canvas.size.height)) + "\">";
     svg += "<rect x=\"0\" y=\"0\" width=\"" + to_string(roundf(canvas.size.width)) + "\" height=\"" + to_string(roundf(canvas.size.height)) + "\" ";
     svg += "style=\"fill:#ffffff;\" />\n";
-    initialStroke = 20;
-    strokeShrinkFactor = 0.5;
-    lineShrinkFactor = 0.75;
-    angleRotationFactor = 15.0;
+    initialStroke = 10;
+    strokeShrinkFactor = 0.65;
+    lineShrinkFactor = 0.90;
+    angleRotationFactor = 5;
     alphaFadeFactor = 0.75;
     numberOfLevels = 8;
-    
-    float x = canvas.size.width/4;
-    //rootLine = Line(Point(x, canvas.size.height), Point(x, canvas.size.height/2));
-    rootLine = Line(Point(x, canvas.size.height), 270, canvas.size.height/2);
-    rootLine.stroke = initialStroke;
-    svg += rootLine.getSvg();
-    
-    Line test = Line(Point(100,100), 111, 50);
-    test.stroke = 5;
-    test.color = Color().greenColor();
-    svg += test.getSvg();
-    
-    Line test2 = Line(Point(100,100), 90, 50);
-    test2.stroke = 5;
-    test2.color = Color().blueColor();
-    svg += test2.getSvg();
-    
-    Line test3 = Line(Point(100,100), 210, 50);
-    test3.stroke = 5;
-    test3.color = Color().redColor();
-    svg += test3.getSvg();
-    
-    cout << test3.getAngle() << " is the get angle" << endl;
-    
-    _skew();
-    _complete();
-    _pre_order_map(&root, &Tree::_output);
-    output();
 }
 
 /// Creates a left skewed tree.
@@ -73,12 +45,12 @@ void Tree::_skew() {
     
     root->leftLine.color = Color().blackColor();
     root->leftLine.color.alpha = rootLine.color.alpha * alphaFadeFactor;
-    root->leftLine = Line(rootLine.getEnd(), 270-angleRotationFactor, rootLine.getLength()*lineShrinkFactor);
+    root->leftLine = Line(rootLine.getEnd(), rootLine.getAngle()-angleRotationFactor, rootLine.getLength()*lineShrinkFactor);
     root->leftLine.stroke = rootLine.stroke * strokeShrinkFactor;
     
     root->rightLine.color = Color().blackColor();
     root->rightLine.color.alpha = rootLine.color.alpha * alphaFadeFactor;
-    root->rightLine = Line(rootLine.getEnd(), 270+angleRotationFactor, rootLine.getLength()*lineShrinkFactor);
+    root->rightLine = Line(rootLine.getEnd(), rootLine.getAngle()+angleRotationFactor, rootLine.getLength()*lineShrinkFactor);
     root->rightLine.stroke = rootLine.stroke * strokeShrinkFactor;
 }
 
@@ -224,10 +196,17 @@ void Tree::_output(TreeNode ** node) {
     svg += (*node)->rightLine.getSvg();
 }
 
-void Tree::output() {
-    _post_order_map(&root, &Tree::_output);
+void Tree::writeToFile(string filename) {
+    float x = canvas.size.width/4;
+    rootLine = Line(Point(x, canvas.size.height), 270, canvas.size.height/2);
+    rootLine.stroke = initialStroke;
+    svg += rootLine.getSvg();
     
-    ofstream file ("art.svg");
+    _skew();
+    _complete();
+    _pre_order_map(&root, &Tree::_output);
+    
+    ofstream file (filename);
     if (file.is_open()) {
         file << svg;
         file << "</svg>";

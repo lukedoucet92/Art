@@ -66,26 +66,15 @@ public:
     Tree();
     
     // Outputs the art to file.
-    void output();
+    void writeToFile(string filename);
     
     ~Tree();
-    
-private:
-    
-    // Pointer to the root of the parse tree.
-    TreeNode* root;
-    
-    // SVG output.
-    string svg;
     
     // The canvas.
     Canvas canvas;
     
     // The initial stroke of the `rootLine`.
     float initialStroke;
-    
-    // The root line of the tree.
-    Line rootLine;
     
     // The stroke shrink factor.
     float strokeShrinkFactor;
@@ -101,6 +90,17 @@ private:
     
     // The number of levels in the tree.
     int numberOfLevels;
+    
+private:
+    
+    // Pointer to the root of the parse tree.
+    TreeNode* root;
+    
+    // The root line of the tree.
+    Line rootLine;
+    
+    // SVG output.
+    string svg;
     
     // Skews a tree to NUM_LEVELS.
     void _skew();

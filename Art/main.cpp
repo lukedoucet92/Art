@@ -12,11 +12,16 @@
 using namespace std;
 
 int main(int argc, const char * argv[]) {
-
     try {
         Tree *tree = new Tree();
+        tree->numberOfLevels = 15;
+        tree->alphaFadeFactor = 1.0;
+        tree->writeToFile("art.svg");
         delete tree;
+        
     } catch (string exception) {
         cout << exception << endl;
     }
+    
+    return 0;
 }

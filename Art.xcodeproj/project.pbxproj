@@ -62,7 +62,7 @@
 			children = (
 				FC9D8C191E945BC500B3CC8C /* README */,
 				FC9D8C271E9460AF00B3CC8C /* Data Structures */,
-				FC9D8C211E945BF700B3CC8C /* Graphics */,
+				FC9D8C211E945BF700B3CC8C /* SVG */,
 				FC9D8C161E945BC500B3CC8C /* main.cpp */,
 				8AC7D9201DC45F1900FE0562 /* Products */,
 			);
@@ -85,7 +85,7 @@
 			name = Tree;
 			sourceTree = "<group>";
 		};
-		FC9D8C211E945BF700B3CC8C /* Graphics */ = {
+		FC9D8C211E945BF700B3CC8C /* SVG */ = {
 			isa = PBXGroup;
 			children = (
 				FC9D8C2B1E95B44100B3CC8C /* Canvas */,
@@ -94,7 +94,7 @@
 				FC9D8C331E95B8F600B3CC8C /* Size */,
 				FC9D8C2F1E95B81500B3CC8C /* Point */,
 			);
-			name = Graphics;
+			name = SVG;
 			sourceTree = "<group>";
 		};
 		FC9D8C251E94609E00B3CC8C /* Color */ = {
