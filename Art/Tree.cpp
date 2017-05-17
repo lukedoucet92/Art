@@ -16,28 +16,22 @@ Tree::Tree() {
     lineShrinkFactor = 0.75;
     angleRotationFactor = 15.0;
     alphaFadeFactor = 0.75;
+    numberOfLevels = 8;
     
     float x = canvas.size.width/2;
     rootLine = Line(Point(x, canvas.size.height), Point(x, canvas.size.height/2));
     rootLine.stroke = initialStroke;
     svg += rootLine.getSvg();
     
-//    Line test = Line(canvas.midPoint(), -angleRotationFactor, 100);
-//    test.color = Color().greenColor();
-//    test.stroke = 12;
-//    svg += test.getSvg();
-//    cout << "angle: " << test.getAngle() << endl;
-    
-    //TODO: Fix `getAngle()` function.
-    
     _skew();
     _complete();
     _pre_order_map(&root, &Tree::_output);
+    output();
 }
 
 /// Creates a left skewed tree.
 void Tree::_skew() {
-    int currentLevel = NUM_LEVELS;
+    int currentLevel = numberOfLevels;
     
     TreeNode* ptr = NULL;
     
@@ -78,7 +72,7 @@ void Tree::_complete() {
 
 /// Configures an individial node in the tree.
 void Tree::_completeNode(TreeNode ** node) {
-    if((*node)->currentLevel != NUM_LEVELS) {
+    if((*node)->currentLevel != numberOfLevels) {
         if ((*node)->leftChild == NULL) {
             TreeNode* newNode = new TreeNode();
             newNode->parent = *node;

@@ -60,8 +60,6 @@ struct TreeNode {
     }
 };
 
-#define NUM_LEVELS 3
-
 class Tree {
 public:
     
@@ -100,6 +98,9 @@ private:
     
     // The alpha fade factor.
     float alphaFadeFactor;
+    
+    // The number of levels in the tree.
+    int numberOfLevels;
     
     // Skews a tree to NUM_LEVELS.
     void _skew();
