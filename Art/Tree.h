@@ -71,9 +71,6 @@ public:
     
     ~Tree();
     
-    // The canvas.
-    SVGCanvas canvas;
-    
     // The initial stroke of the `rootLine`.
     float initialStroke;
     
@@ -99,6 +96,9 @@ private:
     
     // The root line of the tree.
     SVGLine rootLine;
+    
+    // The canvas.
+    SVGCanvas canvas;
     
     // Skews a tree to NUM_LEVELS.
     void _skew();

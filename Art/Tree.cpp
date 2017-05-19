@@ -8,10 +8,6 @@ using namespace std;
 
 Tree::Tree(Size canvasSize) {
     canvas = SVGCanvas(canvasSize);
-    SVGRectangle * rect = new SVGRectangle(Point(), canvas.getSize());
-    rect->color = Color().blueColor();
-    canvas.objects.push_back(rect);
-    
     initialStroke = 10;
     strokeShrinkFactor = 0.65;
     lineShrinkFactor = 0.90;
@@ -114,11 +110,12 @@ Tree::~Tree() {
 }
 
 void Tree::dealloc() {
+    canvas.objects.clear();
+    
     if(this->root != NULL) {
         _post_order_map(&root, &Tree::deleteNode);
     } else {
-        printf("Fatal: Unable to delete tree. Already NULL at %p\n", (void*)&root);
-        exit(EXIT_FAILURE);
+        return;
     }
 }
 
@@ -197,8 +194,21 @@ void Tree::_output(TreeNode ** node) {
 }
 
 void Tree::writeToFile(string filename) {
+    
+    //TODO: remove
+    SVGRectangle * rect = new SVGRectangle(Point(), canvas.getSize());
+    rect->color = Color().blueColor();
+    canvas.objects.push_back(rect);
+    
+    if(numberOfLevels < 1) { return; }
+    
+    //TODO: fix
     float x = canvas.getSize().width/4;
     rootLine = SVGLine(Point(x, canvas.getSize().height), 270, canvas.getSize().height/2);
+    
+//    float x = canvas.getSize().width/4;
+//    rootLine = SVGLine(Point(50, 100), 270, 50);
+    
     rootLine.stroke = initialStroke;
     canvas.objects.push_back(&rootLine);
     
@@ -213,4 +223,6 @@ void Tree::writeToFile(string filename) {
     } else {
         exit(1);
     }
+    
+    dealloc();
 }

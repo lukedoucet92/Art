@@ -11,10 +11,10 @@
 
 struct Point {
     Point();
-    Point(int x, int y);
+    Point(float x, float y);
     
-    int x;
-    int y;
+    float x;
+    float y;
 };
 
 #endif /* Point_hpp */

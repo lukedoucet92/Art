@@ -31,12 +31,12 @@ float SVGLine::getLength() {
 
 string SVGLine::getSvg() {
     string svg = "<line ";
-    svg += "x1=\"" + to_string(this->start.x) + "\" ";
-    svg += "y1=\"" + to_string(this->start.y) + "\" ";
-    svg += "x2=\"" + to_string(this->end.x) + "\" ";
-    svg += "y2=\"" + to_string(this->end.y) + "\" ";
+    svg += "x1=\"" + to_string(this->start.x) + "%\" ";
+    svg += "y1=\"" + to_string(this->start.y) + "%\" ";
+    svg += "x2=\"" + to_string(this->end.x) + "%\" ";
+    svg += "y2=\"" + to_string(this->end.y) + "%\" ";
     svg += "style=\"stroke:" + this->color.rgba() + ";stroke-width:";
-    svg += to_string(this->stroke) + ";stroke-opacity:" + to_string(this->color.alpha) + "\" />\n";
+    svg += to_string(this->stroke) + ";stroke-opacity:" + to_string(this->color.alpha) + "\" /></line>\n";
     return svg;
 }
 
