@@ -13,10 +13,10 @@ using namespace std;
 
 int main(int argc, const char * argv[]) {
     try {
-        Tree *tree = new Tree();
-        tree->numberOfLevels = 15;
+        Tree *tree = new Tree(Size(800, 450));
+        tree->numberOfLevels = 5;
         tree->alphaFadeFactor = 1.0;
-        tree->writeToFile("art.svg");
+        tree->writeToFile("tree.svg");
         delete tree;
         
     } catch (string exception) {

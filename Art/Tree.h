@@ -5,9 +5,10 @@
 #include <iostream>
 #include <fstream>
 #include <math.h>
-#include "Line.h"
-#include "Canvas.h"
 
+#include "SVGLine.h"
+#include "SVGRectangle.h"
+#include "SVGCanvas.h"
 
 enum PrintOrder {
     preOrder,
@@ -18,16 +19,16 @@ enum PrintOrder {
 struct TreeNode {
     TreeNode* leftChild;
     TreeNode* rightChild;
-    Line leftLine;
-    Line rightLine;
+    SVGLine leftLine;
+    SVGLine rightLine;
     TreeNode* parent;
     int currentLevel;
     
     TreeNode() {
         this->leftChild = NULL;
         this->rightChild = NULL;
-        this->leftLine = Line();
-        this->rightLine = Line();
+        this->leftLine = SVGLine();
+        this->rightLine = SVGLine();
         this->parent = NULL;
         currentLevel = 0;
     }
@@ -35,13 +36,13 @@ struct TreeNode {
     TreeNode(TreeNode* leftChild, TreeNode* rightChild) {
         this->leftChild = leftChild;
         this->rightChild = rightChild;
-        this->leftLine = Line();
-        this->rightLine = Line();
+        this->leftLine = SVGLine();
+        this->rightLine = SVGLine();
         this->parent = NULL;
         currentLevel = 0;
     }
     
-    TreeNode(Line leftLine, Line rightLine) {
+    TreeNode(SVGLine leftLine, SVGLine rightLine) {
         this->leftChild = NULL;
         this->rightChild = NULL;
         this->leftLine = leftLine;
@@ -50,7 +51,7 @@ struct TreeNode {
         currentLevel = 0;
     }
     
-    TreeNode(TreeNode* leftChild, TreeNode* rightChild, Line leftLine, Line rightLine, TreeNode* parent) {
+    TreeNode(TreeNode* leftChild, TreeNode* rightChild, SVGLine leftLine, SVGLine rightLine, TreeNode* parent) {
         this->leftChild = leftChild;
         this->rightChild = rightChild;
         this->leftLine = leftLine;
@@ -63,7 +64,7 @@ struct TreeNode {
 class Tree {
 public:
     
-    Tree();
+    Tree(Size canvasSize);
     
     // Outputs the art to file.
     void writeToFile(string filename);
@@ -71,7 +72,7 @@ public:
     ~Tree();
     
     // The canvas.
-    Canvas canvas;
+    SVGCanvas canvas;
     
     // The initial stroke of the `rootLine`.
     float initialStroke;
@@ -97,10 +98,7 @@ private:
     TreeNode* root;
     
     // The root line of the tree.
-    Line rootLine;
-    
-    // SVG output.
-    string svg;
+    SVGLine rootLine;
     
     // Skews a tree to NUM_LEVELS.
     void _skew();
@@ -111,21 +109,21 @@ private:
     // Completes tree at `node`.
     void _completeNode(TreeNode ** node);
     
-    // Internal Print
+    // Internal Print.
     void _output(TreeNode ** node);
     
-    // External Traversal Methods
+    // External Traversal Methods.
     void post_order_map(void (Tree::*handler)(TreeNode**));
     void in_order_map(void (Tree::*handler)(TreeNode**));
     void pre_order_map(void (Tree::*handler)(TreeNode**));
     
     
-    // Internal Traversal Methods
+    // Internal Traversal Methods.
     void _post_order_map(TreeNode** node, void (Tree::*handler)(TreeNode**));
     void _in_order_map(TreeNode** node, void (Tree::*handler)(TreeNode**));
     void _pre_order_map(TreeNode** node, void (Tree::*handler)(TreeNode**));
     
-    // Destructor Helpers
+    // Destructor Helpers.
     void dealloc();
     void deleteNode(TreeNode ** node);
 };

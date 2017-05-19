@@ -9,9 +9,10 @@ using namespace std;
 class Color {
 public:
     Color();
+    
     Color(float red, float green, float blue, float alpha);
     
-    string toSvg();
+    string rgba();
     
     // Black color.
     Color blackColor();
@@ -25,7 +26,12 @@ public:
     // Blue color.
     Color blueColor();
     
+    // Clear color.
+    Color clearColor();
     
+    // White color.
+    Color whiteColor();
+
     float red;
     float green;
     float blue;

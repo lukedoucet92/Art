@@ -1,27 +1,31 @@
 
-#ifndef LINE_H
-#define LINE_H
+#ifndef SVGLINE_H
+#define SVGLINE_H
 
 #include <string>
 #include <iostream>
 #include <math.h>
 #include "Color.h"
 #include "Point.h"
+#include "SVGObject.h"
 
 using namespace std;
 
-class Line {
+class SVGLine : public SVGObject {
 public:
-    Line();
-    Line(Point start, float angle, float length);
+    SVGLine();
+    
+    SVGLine(Point start, float angle, float length);
     
     string getSvg();
-    Point getStart();
-    Point getEnd();
-    float getAngle();
-    float getLength();
     
-    Color color;
+    Point getStart();
+    
+    Point getEnd();
+    
+    float getAngle();
+    
+    float getLength();
     
     float stroke;
     

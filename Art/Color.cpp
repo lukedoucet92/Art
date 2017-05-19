@@ -22,11 +22,12 @@ Color::Color(float red, float green, float blue, float alpha) {
     this->alpha = alpha;
 }
 
-string Color::toSvg() {
+string Color::rgba() {
     float r = red * 255.0;
     float g = green * 255.0;
     float b = blue * 255.0;
-    string svg = "rgb(" + to_string(r) + "," + to_string(g) + "," + to_string(b) + ")";
+    float a = alpha * 255.0;
+    string svg = "rgba(" + to_string(r) + "," + to_string(g) + "," + to_string(b) + "," + to_string(a) + ")";
     return svg;
 }
 
@@ -45,4 +46,12 @@ Color Color::redColor() {
 
 Color Color::blueColor() {
     return Color(0.0, 0.0, 1.0, 1.0);
+}
+
+Color Color::clearColor() {
+    return Color(0.0, 0.0, 1.0, 0.0);
+}
+
+Color Color::whiteColor() {
+    return Color(1.0, 1.0, 1.0, 1.0);
 }
