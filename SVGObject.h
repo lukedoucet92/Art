@@ -22,9 +22,6 @@ public:
     
     /// The color of the object.
     Color color;
-    
-    /// The alpha of the object.
-    float alpha;
 };
 
 #endif

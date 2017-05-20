@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC95FDCF1ECFD0B40013A291 /* SVGCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC95FDCD1ECFD0B40013A291 /* SVGCircle.cpp */; };
+		FC95FDD31ECFD3C70013A291 /* RecursiveDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC95FDD11ECFD3C70013A291 /* RecursiveDrawing.cpp */; };
 		FC9D8C1D1E945BC500B3CC8C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC9D8C161E945BC500B3CC8C /* main.cpp */; };
 		FC9D8C1E1E945BC500B3CC8C /* Tree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC9D8C171E945BC500B3CC8C /* Tree.cpp */; };
 		FC9D8C1F1E945BC500B3CC8C /* SVGLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC9D8C1B1E945BC500B3CC8C /* SVGLine.cpp */; };
@@ -32,6 +34,11 @@
 
 /* Begin PBXFileReference section */
 		8AC7D91F1DC45F1900FE0562 /* Art */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Art; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC95FDCD1ECFD0B40013A291 /* SVGCircle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SVGCircle.cpp; sourceTree = "<group>"; };
+		FC95FDCE1ECFD0B40013A291 /* SVGCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGCircle.h; sourceTree = "<group>"; };
+		FC95FDD11ECFD3C70013A291 /* RecursiveDrawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RecursiveDrawing.cpp; sourceTree = "<group>"; };
+		FC95FDD21ECFD3C70013A291 /* RecursiveDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecursiveDrawing.h; sourceTree = "<group>"; };
+		FC95FDD51ECFD5160013A291 /* Graphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Graphics.h; sourceTree = "<group>"; };
 		FC9D8C161E945BC500B3CC8C /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Art/main.cpp; sourceTree = "<group>"; };
 		FC9D8C171E945BC500B3CC8C /* Tree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tree.cpp; path = Art/Tree.cpp; sourceTree = "<group>"; };
 		FC9D8C181E945BC500B3CC8C /* Tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tree.h; path = Art/Tree.h; sourceTree = "<group>"; };
@@ -83,6 +90,24 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		FC95FDD01ECFD0B80013A291 /* SVGCircle */ = {
+			isa = PBXGroup;
+			children = (
+				FC95FDCE1ECFD0B40013A291 /* SVGCircle.h */,
+				FC95FDCD1ECFD0B40013A291 /* SVGCircle.cpp */,
+			);
+			name = SVGCircle;
+			sourceTree = "<group>";
+		};
+		FC95FDD41ECFD3CC0013A291 /* RecursiveDrawing */ = {
+			isa = PBXGroup;
+			children = (
+				FC95FDD21ECFD3C70013A291 /* RecursiveDrawing.h */,
+				FC95FDD11ECFD3C70013A291 /* RecursiveDrawing.cpp */,
+			);
+			name = RecursiveDrawing;
+			sourceTree = "<group>";
+		};
 		FC9D8C201E945BE500B3CC8C /* Tree */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +148,7 @@
 		FC9D8C271E9460AF00B3CC8C /* Data Structures */ = {
 			isa = PBXGroup;
 			children = (
+				FC95FDD41ECFD3CC0013A291 /* RecursiveDrawing */,
 				FC9D8C201E945BE500B3CC8C /* Tree */,
 			);
 			name = "Data Structures";
@@ -167,6 +193,7 @@
 		FCDC85CE1ECE97150094BEDB /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
+				FC95FDD51ECFD5160013A291 /* Graphics.h */,
 				FC9D8C251E94609E00B3CC8C /* Color */,
 				FC9D8C331E95B8F600B3CC8C /* Size */,
 				FC9D8C2F1E95B81500B3CC8C /* Point */,
@@ -179,6 +206,7 @@
 			children = (
 				FCDC85CD1ECE957A0094BEDB /* SVGObject */,
 				FC9D8C2B1E95B44100B3CC8C /* Canvas */,
+				FC95FDD01ECFD0B80013A291 /* SVGCircle */,
 				FCDC85D41ECE9A330094BEDB /* SVGRectangle */,
 				FC9D8C261E9460A900B3CC8C /* Line */,
 			);
@@ -256,9 +284,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC9D8C2E1E95B6BC00B3CC8C /* Point.cpp in Sources */,
+				FC95FDD31ECFD3C70013A291 /* RecursiveDrawing.cpp in Sources */,
 				FC9D8C1F1E945BC500B3CC8C /* SVGLine.cpp in Sources */,
 				FC9D8C241E94608C00B3CC8C /* Color.cpp in Sources */,
 				FC9D8C321E95B88B00B3CC8C /* Size.cpp in Sources */,
+				FC95FDCF1ECFD0B40013A291 /* SVGCircle.cpp in Sources */,
 				FC9D8C1D1E945BC500B3CC8C /* main.cpp in Sources */,
 				FCDC85CC1ECE95750094BEDB /* SVGObject.cpp in Sources */,
 				FC9D8C1E1E945BC500B3CC8C /* Tree.cpp in Sources */,

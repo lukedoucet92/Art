@@ -10,7 +10,6 @@
 
 SVGObject::SVGObject() {
     this->color = Color();
-    this->alpha = 1.0;
 }
 //
 ///// SVG representation of the object.
