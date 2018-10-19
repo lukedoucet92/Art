@@ -1,0 +1,3 @@
+# Art
+
+> Generates SVG art.
