@@ -27,6 +27,5 @@ string SVGCircle::getSvg() {
     svg += "\" r=\"" + to_string(radius) + "\" ";
     svg += "style=\"fill:" + color.rgba() + ";\" ";
     svg += "stroke=\"" + strokeColor.rgba() + "\" stroke-width=\"" + to_string(strokeWidth) + "\" />\n";
-    
     return svg;
 }

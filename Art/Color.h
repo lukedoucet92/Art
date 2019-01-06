@@ -1,3 +1,10 @@
+//
+//  Color.h
+//  Art
+//
+//  Created by Luke Doucet on 4/4/17.
+//  Copyright © 2017 Luke Doucet. All rights reserved.
+//
 
 #ifndef COLOR_H
 #define COLOR_H
@@ -33,8 +40,11 @@ public:
     Color whiteColor();
 
     float red;
+    
     float green;
+    
     float blue;
+    
     float alpha;
 };
 

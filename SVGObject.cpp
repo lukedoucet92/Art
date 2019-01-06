@@ -11,8 +11,3 @@
 SVGObject::SVGObject() {
     this->color = Color();
 }
-//
-///// SVG representation of the object.
-//string SVGObject::getSvg() {
-//    return "";
-//}

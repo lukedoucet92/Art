@@ -1,4 +1,10 @@
-
+//
+//  SVGCanvas.cpp
+//  Art
+//
+//  Created by Luke Doucet on 4/4/17.
+//  Copyright © 2017 Luke Doucet. All rights reserved.
+//
 
 #include "SVGCanvas.h"
 
@@ -32,9 +38,11 @@ Size SVGCanvas::getSize() {
 Point SVGCanvas::getMidPoint() {
     return Point(size.width/2, size.height/2);
 }
+
 Point SVGCanvas::getMinPoint() {
     return Point(0, 0);
 }
+
 Point SVGCanvas::getMaxPoint() {
     return Point(size.width, size.height);
 }

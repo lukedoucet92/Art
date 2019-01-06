@@ -1,3 +1,10 @@
+//
+//  Tree.h
+//  Art
+//
+//  Created by Luke Doucet on 4/4/17.
+//  Copyright © 2017 Luke Doucet. All rights reserved.
+//
 
 #ifndef TREE_H
 #define TREE_H
@@ -5,7 +12,6 @@
 #include <iostream>
 #include <fstream>
 #include <math.h>
-
 #include "SVGLine.h"
 #include "SVGRectangle.h"
 #include "SVGCanvas.h"

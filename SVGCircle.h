@@ -1,5 +1,5 @@
 //
-//  SVGCircle.hpp
+//  SVGCircle.h
 //  Art
 //
 //  Created by Luke Doucet on 5/19/17.

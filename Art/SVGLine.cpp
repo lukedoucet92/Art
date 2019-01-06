@@ -1,3 +1,10 @@
+//
+//  SVGLine.cpp
+//  Art
+//
+//  Created by Luke Doucet on 4/4/17.
+//  Copyright © 2017 Luke Doucet. All rights reserved.
+//
 
 #include "SVGLine.h"
 

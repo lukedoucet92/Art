@@ -42,7 +42,7 @@
 		FC9D8C161E945BC500B3CC8C /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Art/main.cpp; sourceTree = "<group>"; };
 		FC9D8C171E945BC500B3CC8C /* Tree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tree.cpp; path = Art/Tree.cpp; sourceTree = "<group>"; };
 		FC9D8C181E945BC500B3CC8C /* Tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tree.h; path = Art/Tree.h; sourceTree = "<group>"; };
-		FC9D8C191E945BC500B3CC8C /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README; path = Art/README; sourceTree = "<group>"; };
+		FC9D8C191E945BC500B3CC8C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = Art/README.md; sourceTree = "<group>"; };
 		FC9D8C1B1E945BC500B3CC8C /* SVGLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SVGLine.cpp; path = Art/SVGLine.cpp; sourceTree = "<group>"; };
 		FC9D8C1C1E945BC500B3CC8C /* SVGLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVGLine.h; path = Art/SVGLine.h; sourceTree = "<group>"; };
 		FC9D8C221E94608C00B3CC8C /* Color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Color.cpp; path = Art/Color.cpp; sourceTree = "<group>"; };
@@ -74,7 +74,7 @@
 		8AC7D9161DC45F1900FE0562 = {
 			isa = PBXGroup;
 			children = (
-				FC9D8C191E945BC500B3CC8C /* README */,
+				FC9D8C191E945BC500B3CC8C /* README.md */,
 				FC9D8C271E9460AF00B3CC8C /* Data Structures */,
 				FC9D8C211E945BF700B3CC8C /* SVG */,
 				FC9D8C161E945BC500B3CC8C /* main.cpp */,

@@ -1,5 +1,5 @@
 //
-//  SVGObject.hpp
+//  SVGObject.h
 //  Art
 //
 //  Created by Luke Doucet on 5/18/17.
@@ -14,7 +14,6 @@
 
 class SVGObject {
 public:
-    
     SVGObject();
     
     /// SVG representation of the object.

@@ -1,8 +1,0 @@
-
-TODO:
-
-- Single number input causes a fatal error
-- Support for variable simplification
-- Truncate trailing zeros
-- Higher precision
-- Detect overflows

@@ -1,8 +1,14 @@
+//
+//  Tree.cpp
+//  Art
+//
+//  Created by Luke Doucet on 4/4/17.
+//  Copyright © 2017 Luke Doucet. All rights reserved.
+//
 
 #include "Tree.h"
 
 using namespace std;
-
 
 //MARK: Constructor
 
@@ -126,8 +132,6 @@ void Tree::deleteNode(TreeNode ** node) {
     }
 }
 
-
-
 //MARK: External Traversal Methods
 
 void Tree::post_order_map(void (Tree::*handler)(TreeNode**)) {
@@ -141,8 +145,6 @@ void Tree::in_order_map(void (Tree::*handler)(TreeNode**)) {
 void Tree::pre_order_map(void (Tree::*handler)(TreeNode**)) {
     _pre_order_map(&root, handler);
 }
-
-
 
 //MARK: Internal Traversal Methods
 

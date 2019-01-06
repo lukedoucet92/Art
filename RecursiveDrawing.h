@@ -1,5 +1,5 @@
 //
-//  RecursiveDrawing.hpp
+//  RecursiveDrawing.h
 //  Art
 //
 //  Created by Luke Doucet on 5/19/17.
@@ -12,7 +12,6 @@
 #include <iostream>
 #include <fstream>
 #include <math.h>
-
 #include "SVGCircle.h"
 #include "SVGRectangle.h"
 #include "SVGCanvas.h"

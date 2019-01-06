@@ -1,3 +1,10 @@
+//
+//  SVGLine.h
+//  Art
+//
+//  Created by Luke Doucet on 4/4/17.
+//  Copyright © 2017 Luke Doucet. All rights reserved.
+//
 
 #ifndef SVGLINE_H
 #define SVGLINE_H
@@ -31,7 +38,9 @@ public:
     
 private:
     float angle;
+    
     Point start;
+    
     Point end;
 };
 

@@ -31,7 +31,6 @@ string Color::rgba() {
     return svg;
 }
 
-
 Color Color::blackColor() {
     return Color(0.0, 0.0, 0.0, 1.0);
 }
