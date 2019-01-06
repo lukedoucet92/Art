@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC95FDCF1ECFD0B40013A291 /* SVGCircle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC95FDCD1ECFD0B40013A291 /* SVGCircle.cpp */; };
+		FC95FDD31ECFD3C70013A291 /* RecursiveDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC95FDD11ECFD3C70013A291 /* RecursiveDrawing.cpp */; };
 		FC9D8C1D1E945BC500B3CC8C /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC9D8C161E945BC500B3CC8C /* main.cpp */; };
 		FC9D8C1E1E945BC500B3CC8C /* Tree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC9D8C171E945BC500B3CC8C /* Tree.cpp */; };
-		FC9D8C1F1E945BC500B3CC8C /* Line.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC9D8C1B1E945BC500B3CC8C /* Line.cpp */; };
+		FC9D8C1F1E945BC500B3CC8C /* SVGLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC9D8C1B1E945BC500B3CC8C /* SVGLine.cpp */; };
 		FC9D8C241E94608C00B3CC8C /* Color.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC9D8C221E94608C00B3CC8C /* Color.cpp */; };
-		FC9D8C2A1E95B41C00B3CC8C /* Canvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC9D8C281E95B41C00B3CC8C /* Canvas.cpp */; };
+		FC9D8C2A1E95B41C00B3CC8C /* SVGCanvas.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC9D8C281E95B41C00B3CC8C /* SVGCanvas.cpp */; };
 		FC9D8C2E1E95B6BC00B3CC8C /* Point.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC9D8C2C1E95B6BC00B3CC8C /* Point.cpp */; };
 		FC9D8C321E95B88B00B3CC8C /* Size.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC9D8C301E95B88B00B3CC8C /* Size.cpp */; };
+		FCDC85CC1ECE95750094BEDB /* SVGObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCDC85CA1ECE95750094BEDB /* SVGObject.cpp */; };
+		FCDC85D31ECE9A2C0094BEDB /* SVGRectangle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FCDC85D11ECE9A2C0094BEDB /* SVGRectangle.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,20 +34,30 @@
 
 /* Begin PBXFileReference section */
 		8AC7D91F1DC45F1900FE0562 /* Art */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Art; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC95FDCD1ECFD0B40013A291 /* SVGCircle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SVGCircle.cpp; sourceTree = "<group>"; };
+		FC95FDCE1ECFD0B40013A291 /* SVGCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGCircle.h; sourceTree = "<group>"; };
+		FC95FDD11ECFD3C70013A291 /* RecursiveDrawing.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RecursiveDrawing.cpp; sourceTree = "<group>"; };
+		FC95FDD21ECFD3C70013A291 /* RecursiveDrawing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecursiveDrawing.h; sourceTree = "<group>"; };
+		FC95FDD51ECFD5160013A291 /* Graphics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Graphics.h; sourceTree = "<group>"; };
 		FC9D8C161E945BC500B3CC8C /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Art/main.cpp; sourceTree = "<group>"; };
 		FC9D8C171E945BC500B3CC8C /* Tree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tree.cpp; path = Art/Tree.cpp; sourceTree = "<group>"; };
 		FC9D8C181E945BC500B3CC8C /* Tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tree.h; path = Art/Tree.h; sourceTree = "<group>"; };
-		FC9D8C191E945BC500B3CC8C /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README; path = Art/README; sourceTree = "<group>"; };
-		FC9D8C1B1E945BC500B3CC8C /* Line.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Line.cpp; path = Art/Line.cpp; sourceTree = "<group>"; };
-		FC9D8C1C1E945BC500B3CC8C /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Line.h; path = Art/Line.h; sourceTree = "<group>"; };
+		FC9D8C191E945BC500B3CC8C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = Art/README.md; sourceTree = "<group>"; };
+		FC9D8C1B1E945BC500B3CC8C /* SVGLine.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SVGLine.cpp; path = Art/SVGLine.cpp; sourceTree = "<group>"; };
+		FC9D8C1C1E945BC500B3CC8C /* SVGLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVGLine.h; path = Art/SVGLine.h; sourceTree = "<group>"; };
 		FC9D8C221E94608C00B3CC8C /* Color.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Color.cpp; path = Art/Color.cpp; sourceTree = "<group>"; };
 		FC9D8C231E94608C00B3CC8C /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Color.h; path = Art/Color.h; sourceTree = "<group>"; };
-		FC9D8C281E95B41C00B3CC8C /* Canvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Canvas.cpp; sourceTree = "<group>"; };
-		FC9D8C291E95B41C00B3CC8C /* Canvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Canvas.h; sourceTree = "<group>"; };
+		FC9D8C281E95B41C00B3CC8C /* SVGCanvas.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SVGCanvas.cpp; sourceTree = "<group>"; };
+		FC9D8C291E95B41C00B3CC8C /* SVGCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGCanvas.h; sourceTree = "<group>"; };
 		FC9D8C2C1E95B6BC00B3CC8C /* Point.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Point.cpp; sourceTree = "<group>"; };
 		FC9D8C2D1E95B6BC00B3CC8C /* Point.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Point.h; sourceTree = "<group>"; };
 		FC9D8C301E95B88B00B3CC8C /* Size.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Size.cpp; sourceTree = "<group>"; };
 		FC9D8C311E95B88B00B3CC8C /* Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Size.h; sourceTree = "<group>"; };
+		FCDC85CA1ECE95750094BEDB /* SVGObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SVGObject.cpp; sourceTree = "<group>"; };
+		FCDC85CB1ECE95750094BEDB /* SVGObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGObject.h; sourceTree = "<group>"; };
+		FCDC85D01ECE98FF0094BEDB /* SVGConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SVGConstants.h; sourceTree = "<group>"; };
+		FCDC85D11ECE9A2C0094BEDB /* SVGRectangle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SVGRectangle.cpp; sourceTree = "<group>"; };
+		FCDC85D21ECE9A2C0094BEDB /* SVGRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVGRectangle.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +74,9 @@
 		8AC7D9161DC45F1900FE0562 = {
 			isa = PBXGroup;
 			children = (
-				FC9D8C191E945BC500B3CC8C /* README */,
+				FC9D8C191E945BC500B3CC8C /* README.md */,
 				FC9D8C271E9460AF00B3CC8C /* Data Structures */,
-				FC9D8C211E945BF700B3CC8C /* Graphics */,
+				FC9D8C211E945BF700B3CC8C /* SVG */,
 				FC9D8C161E945BC500B3CC8C /* main.cpp */,
 				8AC7D9201DC45F1900FE0562 /* Products */,
 			);
@@ -76,6 +90,24 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		FC95FDD01ECFD0B80013A291 /* SVGCircle */ = {
+			isa = PBXGroup;
+			children = (
+				FC95FDCE1ECFD0B40013A291 /* SVGCircle.h */,
+				FC95FDCD1ECFD0B40013A291 /* SVGCircle.cpp */,
+			);
+			name = SVGCircle;
+			sourceTree = "<group>";
+		};
+		FC95FDD41ECFD3CC0013A291 /* RecursiveDrawing */ = {
+			isa = PBXGroup;
+			children = (
+				FC95FDD21ECFD3C70013A291 /* RecursiveDrawing.h */,
+				FC95FDD11ECFD3C70013A291 /* RecursiveDrawing.cpp */,
+			);
+			name = RecursiveDrawing;
+			sourceTree = "<group>";
+		};
 		FC9D8C201E945BE500B3CC8C /* Tree */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,16 +117,14 @@
 			name = Tree;
 			sourceTree = "<group>";
 		};
-		FC9D8C211E945BF700B3CC8C /* Graphics */ = {
+		FC9D8C211E945BF700B3CC8C /* SVG */ = {
 			isa = PBXGroup;
 			children = (
-				FC9D8C2B1E95B44100B3CC8C /* Canvas */,
-				FC9D8C251E94609E00B3CC8C /* Color */,
-				FC9D8C261E9460A900B3CC8C /* Line */,
-				FC9D8C331E95B8F600B3CC8C /* Size */,
-				FC9D8C2F1E95B81500B3CC8C /* Point */,
+				FCDC85D01ECE98FF0094BEDB /* SVGConstants.h */,
+				FCDC85CF1ECE972C0094BEDB /* Objects */,
+				FCDC85CE1ECE97150094BEDB /* Graphics */,
 			);
-			name = Graphics;
+			name = SVG;
 			sourceTree = "<group>";
 		};
 		FC9D8C251E94609E00B3CC8C /* Color */ = {
@@ -109,8 +139,8 @@
 		FC9D8C261E9460A900B3CC8C /* Line */ = {
 			isa = PBXGroup;
 			children = (
-				FC9D8C1C1E945BC500B3CC8C /* Line.h */,
-				FC9D8C1B1E945BC500B3CC8C /* Line.cpp */,
+				FC9D8C1C1E945BC500B3CC8C /* SVGLine.h */,
+				FC9D8C1B1E945BC500B3CC8C /* SVGLine.cpp */,
 			);
 			name = Line;
 			sourceTree = "<group>";
@@ -118,6 +148,7 @@
 		FC9D8C271E9460AF00B3CC8C /* Data Structures */ = {
 			isa = PBXGroup;
 			children = (
+				FC95FDD41ECFD3CC0013A291 /* RecursiveDrawing */,
 				FC9D8C201E945BE500B3CC8C /* Tree */,
 			);
 			name = "Data Structures";
@@ -126,8 +157,8 @@
 		FC9D8C2B1E95B44100B3CC8C /* Canvas */ = {
 			isa = PBXGroup;
 			children = (
-				FC9D8C291E95B41C00B3CC8C /* Canvas.h */,
-				FC9D8C281E95B41C00B3CC8C /* Canvas.cpp */,
+				FC9D8C291E95B41C00B3CC8C /* SVGCanvas.h */,
+				FC9D8C281E95B41C00B3CC8C /* SVGCanvas.cpp */,
 			);
 			name = Canvas;
 			sourceTree = "<group>";
@@ -148,6 +179,47 @@
 				FC9D8C301E95B88B00B3CC8C /* Size.cpp */,
 			);
 			name = Size;
+			sourceTree = "<group>";
+		};
+		FCDC85CD1ECE957A0094BEDB /* SVGObject */ = {
+			isa = PBXGroup;
+			children = (
+				FCDC85CB1ECE95750094BEDB /* SVGObject.h */,
+				FCDC85CA1ECE95750094BEDB /* SVGObject.cpp */,
+			);
+			name = SVGObject;
+			sourceTree = "<group>";
+		};
+		FCDC85CE1ECE97150094BEDB /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				FC95FDD51ECFD5160013A291 /* Graphics.h */,
+				FC9D8C251E94609E00B3CC8C /* Color */,
+				FC9D8C331E95B8F600B3CC8C /* Size */,
+				FC9D8C2F1E95B81500B3CC8C /* Point */,
+			);
+			name = Graphics;
+			sourceTree = "<group>";
+		};
+		FCDC85CF1ECE972C0094BEDB /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				FCDC85CD1ECE957A0094BEDB /* SVGObject */,
+				FC9D8C2B1E95B44100B3CC8C /* Canvas */,
+				FC95FDD01ECFD0B80013A291 /* SVGCircle */,
+				FCDC85D41ECE9A330094BEDB /* SVGRectangle */,
+				FC9D8C261E9460A900B3CC8C /* Line */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		FCDC85D41ECE9A330094BEDB /* SVGRectangle */ = {
+			isa = PBXGroup;
+			children = (
+				FCDC85D21ECE9A2C0094BEDB /* SVGRectangle.h */,
+				FCDC85D11ECE9A2C0094BEDB /* SVGRectangle.cpp */,
+			);
+			name = SVGRectangle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,12 +284,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC9D8C2E1E95B6BC00B3CC8C /* Point.cpp in Sources */,
-				FC9D8C1F1E945BC500B3CC8C /* Line.cpp in Sources */,
+				FC95FDD31ECFD3C70013A291 /* RecursiveDrawing.cpp in Sources */,
+				FC9D8C1F1E945BC500B3CC8C /* SVGLine.cpp in Sources */,
 				FC9D8C241E94608C00B3CC8C /* Color.cpp in Sources */,
 				FC9D8C321E95B88B00B3CC8C /* Size.cpp in Sources */,
+				FC95FDCF1ECFD0B40013A291 /* SVGCircle.cpp in Sources */,
 				FC9D8C1D1E945BC500B3CC8C /* main.cpp in Sources */,
+				FCDC85CC1ECE95750094BEDB /* SVGObject.cpp in Sources */,
 				FC9D8C1E1E945BC500B3CC8C /* Tree.cpp in Sources */,
-				FC9D8C2A1E95B41C00B3CC8C /* Canvas.cpp in Sources */,
+				FCDC85D31ECE9A2C0094BEDB /* SVGRectangle.cpp in Sources */,
+				FC9D8C2A1E95B41C00B3CC8C /* SVGCanvas.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

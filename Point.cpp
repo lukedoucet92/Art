@@ -13,7 +13,7 @@ Point::Point() {
     y = 0;
 }
 
-Point::Point(int x, int y) {
+Point::Point(float x, float y) {
     this->x = x;
     this->y = y;
 }

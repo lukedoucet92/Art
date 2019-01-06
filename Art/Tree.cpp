@@ -1,60 +1,30 @@
+//
+//  Tree.cpp
+//  Art
+//
+//  Created by Luke Doucet on 4/4/17.
+//  Copyright © 2017 Luke Doucet. All rights reserved.
+//
 
 #include "Tree.h"
 
 using namespace std;
 
-
 //MARK: Constructor
 
-Tree::Tree() {
-    canvas = Canvas(Size(800, 450));
-    svg = "<svg width=\"" + to_string(roundf(canvas.size.width)) + "\" height=\"" + to_string(roundf(canvas.size.height)) + "\">\n";
-    svg += "<rect x=\"0\" y=\"0\" width=\"" + to_string(roundf(canvas.size.width)) + "\" height=\"" + to_string(roundf(canvas.size.height)) + "\" ";
-    svg += "style=\"fill:#007aff;\" />\n";
-    initialStroke = 20;
-    strokeShrinkFactor = 0.5;
-    lineShrinkFactor = 0.75;
-    angleRotationFactor = 15.0;
-    
-    float halfCanvas = canvas.size.width/2;
-    float rootLineHeight = canvas.size.height/3;
-    Point rootStart = Point(halfCanvas, 0);
-    Point rootEnd = Point(halfCanvas, rootLineHeight);
-    rootLine = Line(rootStart, rootEnd, initialStroke, Color().blackColor());
-    svg += rootLine.getSvg();
-    
-//    Line left = Line(rootLine.end, 90.0-angleRotationFactor, rootLine.getLength()*lineShrinkFactor);
-//    left.color = Color().blackColor();
-//    left.stroke = rootLine.stroke * strokeShrinkFactor;
-//    
-//    Line right = Line(rootLine.end, 90.0+angleRotationFactor, rootLine.getLength()*lineShrinkFactor);
-//    right.color = Color().blackColor();
-//    right.stroke = rootLine.stroke * strokeShrinkFactor;
-//    
-//    TreeNode * t = new TreeNode(NULL, NULL, left, right, NULL);
-//    root = t;
-    
-//    
-//    Line left2 = Line(left.end, left.getAngle()+angleRotationFactor, left.getLength()*lineShrinkFactor);
-//    left2.color = Color().blackColor();
-//    left2.stroke = left.stroke * strokeShrinkFactor;
-//    
-//    Line right2 = Line(left.end, left.getAngle()-angleRotationFactor, left.getLength()*lineShrinkFactor);
-//    right2.color = Color().blackColor();
-//    right2.stroke = right.stroke * strokeShrinkFactor;
-//    
-//    cout << left.getAngle() << " is the angle." << endl;
-//    
-//    root->leftChild = new TreeNode(NULL, NULL, left2, right2, &left);
-    
-    _skew();
-    _complete();
-    _post_order_map(&root, &Tree::_output);
+Tree::Tree(Size canvasSize) {
+    canvas = SVGCanvas(canvasSize);
+    initialStroke = 10;
+    strokeShrinkFactor = 0.65;
+    lineShrinkFactor = 0.90;
+    angleRotationFactor = 5;
+    alphaFadeFactor = 0.75;
+    numberOfLevels = 8;
 }
 
 /// Creates a left skewed tree.
 void Tree::_skew() {
-    int currentLevel = NUM_LEVELS;
+    int currentLevel = numberOfLevels;
     
     TreeNode* ptr = NULL;
     
@@ -74,6 +44,16 @@ void Tree::_skew() {
     
     root = ptr;
     ptr = NULL;
+    
+    root->leftLine.color = Color().blackColor();
+    root->leftLine.color.alpha = rootLine.color.alpha * alphaFadeFactor;
+    root->leftLine = SVGLine(rootLine.getEnd(), rootLine.getAngle()-angleRotationFactor, rootLine.getLength()*lineShrinkFactor);
+    root->leftLine.stroke = rootLine.stroke * strokeShrinkFactor;
+    
+    root->rightLine.color = Color().blackColor();
+    root->rightLine.color.alpha = rootLine.color.alpha * alphaFadeFactor;
+    root->rightLine = SVGLine(rootLine.getEnd(), rootLine.getAngle()+angleRotationFactor, rootLine.getLength()*lineShrinkFactor);
+    root->rightLine.stroke = rootLine.stroke * strokeShrinkFactor;
 }
 
 /// Creates a complete binary tree from the skewed tree.
@@ -81,8 +61,9 @@ void Tree::_complete() {
     _pre_order_map(&root, &Tree::_completeNode);
 }
 
+/// Configures an individial node in the tree.
 void Tree::_completeNode(TreeNode ** node) {
-    if((*node)->currentLevel != NUM_LEVELS) {
+    if((*node)->currentLevel != numberOfLevels) {
         if ((*node)->leftChild == NULL) {
             TreeNode* newNode = new TreeNode();
             newNode->parent = *node;
@@ -96,6 +77,36 @@ void Tree::_completeNode(TreeNode ** node) {
             (*node)->rightChild = newNode;
         }
     }
+    
+    if((*node)->parent != NULL) {
+        bool isRightSide = (*node)->parent->leftChild == (*node);
+        
+        if(isRightSide) {
+            (*node)->leftLine.color = Color().blackColor();
+            (*node)->leftLine.color.alpha = (*node)->parent->rightLine.color.alpha * alphaFadeFactor;
+            (*node)->leftLine = SVGLine((*node)->parent->rightLine.getEnd(), (*node)->parent->rightLine.getAngle()-(angleRotationFactor*(*node)->currentLevel), (*node)->parent->rightLine.getLength()*lineShrinkFactor);
+            (*node)->leftLine.stroke = (*node)->parent->rightLine.stroke * strokeShrinkFactor;
+            
+            (*node)->rightLine.color = Color().blackColor();
+            (*node)->rightLine.color.alpha = (*node)->parent->rightLine.color.alpha * alphaFadeFactor;
+            (*node)->rightLine = SVGLine((*node)->parent->rightLine.getEnd(), (*node)->parent->rightLine.getAngle()+(angleRotationFactor*(*node)->currentLevel), (*node)->parent->rightLine.getLength()*lineShrinkFactor);
+            
+            (*node)->rightLine.stroke = (*node)->parent->rightLine.stroke * strokeShrinkFactor;
+            
+        } else {
+            (*node)->leftLine.color = Color().blackColor();
+            (*node)->leftLine.color.alpha = (*node)->parent->leftLine.color.alpha * alphaFadeFactor;
+            (*node)->leftLine = SVGLine((*node)->parent->leftLine.getEnd(), (*node)->parent->leftLine.getAngle()-(angleRotationFactor*(*node)->currentLevel), (*node)->parent->leftLine.getLength()*lineShrinkFactor);
+            
+            (*node)->leftLine.stroke = (*node)->parent->leftLine.stroke * strokeShrinkFactor;
+            
+            (*node)->rightLine.color = Color().blackColor();
+            (*node)->rightLine.color.alpha = (*node)->parent->leftLine.color.alpha * alphaFadeFactor;
+            (*node)->rightLine = SVGLine((*node)->parent->leftLine.getEnd(), (*node)->parent->leftLine.getAngle()+(angleRotationFactor*(*node)->currentLevel), (*node)->parent->leftLine.getLength()*lineShrinkFactor);
+            
+            (*node)->rightLine.stroke = (*node)->parent->leftLine.stroke * strokeShrinkFactor;
+        }
+    }
 }
 
 //MARK: Destructor
@@ -105,11 +116,12 @@ Tree::~Tree() {
 }
 
 void Tree::dealloc() {
+    canvas.objects.clear();
+    
     if(this->root != NULL) {
         _post_order_map(&root, &Tree::deleteNode);
     } else {
-        printf("Fatal: Unable to delete tree. Already NULL at %p\n", (void*)&root);
-        exit(EXIT_FAILURE);
+        return;
     }
 }
 
@@ -119,8 +131,6 @@ void Tree::deleteNode(TreeNode ** node) {
         *node = NULL;
     }
 }
-
-
 
 //MARK: External Traversal Methods
 
@@ -135,8 +145,6 @@ void Tree::in_order_map(void (Tree::*handler)(TreeNode**)) {
 void Tree::pre_order_map(void (Tree::*handler)(TreeNode**)) {
     _pre_order_map(&root, handler);
 }
-
-
 
 //MARK: Internal Traversal Methods
 
@@ -183,19 +191,40 @@ void Tree::_pre_order_map(TreeNode** node, void (Tree::*handler)(TreeNode**)) {
 }
 
 void Tree::_output(TreeNode ** node) {
-    svg += (*node)->leftLine.getSvg();
-    svg += (*node)->rightLine.getSvg();
+    canvas.objects.push_back( &(*node)->leftLine  );
+    canvas.objects.push_back( &(*node)->rightLine );
 }
 
-void Tree::output() {
-    _post_order_map(&root, &Tree::_output);
+void Tree::writeToFile(string filename) {
     
-    ofstream file ("art.svg");
+    //TODO: remove
+    SVGRectangle * rect = new SVGRectangle(Point(), canvas.getSize());
+    rect->color = Color().blueColor();
+    canvas.objects.push_back(rect);
+    
+    if(numberOfLevels < 1) { return; }
+    
+    //TODO: fix
+    float x = canvas.getSize().width/4;
+    rootLine = SVGLine(Point(x, canvas.getSize().height), 270, canvas.getSize().height/2);
+    
+//    float x = canvas.getSize().width/4;
+//    rootLine = SVGLine(Point(50, 100), 270, 50);
+    
+    rootLine.stroke = initialStroke;
+    canvas.objects.push_back(&rootLine);
+    
+    _skew();
+    _complete();
+    _pre_order_map(&root, &Tree::_output);
+    
+    ofstream file (filename);
     if (file.is_open()) {
-        file << svg;
-        file << "</svg>";
+        file << canvas.getSvg();
         file.close();
     } else {
         exit(1);
     }
+    
+    dealloc();
 }
